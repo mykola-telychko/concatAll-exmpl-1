@@ -1,5 +1,8 @@
-import { map, concatAll } from 'rxjs/operators';
+import { map, concatAll, filter } from 'rxjs/operators';
 import { of, interval } from 'rxjs';
+
+// https://mydaytodo.com/filter-array-observable-angular/
+// https://www.learnrxjs.io/learn-rxjs/operators/combination/concatall
 
 //emit a value every 2 seconds
 const source = interval(2000);
@@ -10,7 +13,6 @@ const src$ = source.pipe(
   //merge values from inner observable
   concatAll()
 );
-//output: 'Exam
 
 // 1)
 // const subscribe = src$.subscribe((val) =>
@@ -18,10 +20,10 @@ const src$ = source.pipe(
 // );
 
 // 2)
-const subscribe = src$.subscribe((val) => {
-  if (val % 2 === 0) {
-    console.log('not even num: ', val);
-  } else {
-    console.log('even num: ', val);
-  }
-});
+// const subscribe = src$.subscribe((val) => {
+//   if (val % 2 === 0) {
+//     console.log('not even num: ', val);
+//   } else {
+//     console.log('even num: ', val);
+//   }
+// });
